@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Accordion</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+    }
+
+    .main {
+      background-color: #1e272e;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      width: 500px;
+      border: 2px solid #667eea;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 25px;
+      text-align: center;
+      font-size: 26px;
+    }
+
+    .item {
+      border-bottom: 1px solid #485460;
+      padding: 15px 0;
+    }
+
+    .item:last-child {
+      border-bottom: none;
+    }
+
+    .question {
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .answer {
+      font-size: 15px;
+      color: #d2dae2;
+      margin-top: 10px;
+      display: none;
+      line-height: 1.5;
+    }
+
+    .item.active .answer {
+      display: block;
+    }
+
+    .icon {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffdd59;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main">
+    <h2>Frequently Asked Questions</h2>
+    
+    <div class="item">
+      <div class="question" onclick="toggleFAQ(this)">
+        What is HTML?
+        <span class="icon">+</span>
+      </div>
+      <div class="answer">
+        HTML stands for HyperText Markup Language. It is the standard markup language used to create and design pages on the Web.
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="question" onclick="toggleFAQ(this)">
+        What is CSS?
+        <span class="icon">+</span>
+      </div>
+      <div class="answer">
+        CSS stands for Cascading Style Sheets. It describes how HTML elements are to be displayed on screen, paper, or in other media.
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="question" onclick="toggleFAQ(this)">
+        What is JavaScript?
+        <span class="icon">+</span>
+      </div>
+      <div class="answer">
+        JavaScript is a programming language that allows you to implement complex features on web pages, making them interactive and dynamic.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleFAQ(element) {
+      let parent = element.parentElement;
+      parent.classList.toggle('active');
+      
+      let icon = element.querySelector('.icon');
+      if (parent.classList.contains('active')) {
+        icon.innerText = "-";
+      } else {
+        icon.innerText = "+";
+      }
+    }
+  </script>
+
+</body>
+</html>

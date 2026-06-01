@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Digital Clock</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+        }
+
+        .main {
+            background-color: #1e272e;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 2px solid #575fcf;
+        }
+
+        .time {
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #ampm {
+            font-size: 24px;
+            color: #ffdd59;
+            margin-left: 10px;
+        }
+
+        .date {
+            font-size: 20px;
+            color: #d2dae2;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #575fcf;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="time">
+            <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span><span id="ampm"></span>
+        </div>
+        <div class="date" id="date"></div>
+        <button class="btn" id="btn" onclick="toggleFormat()">Switch to 24-Hour Format</button>
+    </div>
+
+    <script>
+        let is24Hour = false;
+
+        function updateTime() {
+            let d = new Date();
+            let h = d.getHours();
+            let m = d.getMinutes();
+            let s = d.getSeconds();
+            let ampmText = "";
+
+            if (!is24Hour) {
+                ampmText = h >= 12 ? " PM" : " AM";
+                h = h % 12;
+                if (h === 0) {
+                    h = 12;
+                }
+            }
+
+            if (h < 10) h = "0" + h;
+            if (m < 10) m = "0" + m;
+            if (s < 10) s = "0" + s;
+
+            document.getElementById('hours').innerText = h;
+            document.getElementById('minutes').innerText = m;
+            document.getElementById('seconds').innerText = s;
+            document.getElementById('ampm').innerText = ampmText;
+
+            let options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            document.getElementById('date').innerText = d.toLocaleDateString('en-US', options);
+        }
+
+        function toggleFormat() {
+            is24Hour = !is24Hour;
+            let btn = document.getElementById('btn');
+            if (is24Hour) {
+                btn.innerText = "Switch to 12-Hour Format";
+            } else {
+                btn.innerText = "Switch to 24-Hour Format";
+            }
+            updateTime();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+</body>
+
+</html>
