@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Development Life Cycle (SDLC) - Internship Report</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px 60px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Cover Page Styles */
+        .cover-page {
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            page-break-after: always;
+        }
+
+        .cover-page h1 {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .cover-page h2 {
+            font-size: 1.8em;
+            color: var(--secondary-color);
+            font-weight: 300;
+            margin-bottom: 50px;
+        }
+
+        .cover-details {
+            margin-top: 50px;
+            font-size: 1.2em;
+            text-align: left;
+            display: inline-block;
+            padding: 30px;
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            background: #fdfdfd;
+        }
+
+        .cover-details p {
+            margin: 10px 0;
+        }
+
+        .cover-details strong {
+            display: inline-block;
+            width: 150px;
+            color: var(--primary-color);
+        }
+
+        /* Standard Content Styles */
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-top: 30px;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .image-caption {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Table of Contents */
+        .toc {
+            page-break-after: always;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .toc li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .toc a {
+            text-decoration: none;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            page-break-before: always;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+                padding: 0;
+                font-size: 11pt; /* Better readability in print */
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+                border: none;
+            }
+            .cover-page {
+                page-break-after: always;
+            }
+            .toc {
+                page-break-before: always;
+            }
+            .image-container {
+                page-break-inside: avoid;
+                margin: 15px 0;
+            }
+            img {
+                max-height: 250px !important; /* Smaller images to prevent forcing to next page */
+                width: auto;
+                max-width: 100%;
+                object-fit: contain;
+                page-break-inside: avoid;
+            }
+            @page {
+                margin: auto; /* Let the browser's default margin handle it perfectly */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Cover Page -->
+    <div class="cover-page">
+        <h1>Software Development Life Cycle (SDLC)</h1>
+        <h2>Internship Documentation Report</h2>
+        
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80" alt="SDLC Cover Image">
+        </div>
+
+        <div class="cover-details">
+            <p><strong>Prepared By:</strong> Vikas Pandey</p>
+            <p><strong>Role:</strong> Software Developer Intern</p>
+            <p><strong>Organization:</strong> [Your Organization Name]</p>
+            <p><strong>Submission Date:</strong> June 2026</p>
+        </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc section">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#intro">1. Introduction to SDLC</a></li>
+            <li><a href="#pros-cons">2. Advantages and Disadvantages of SDLC</a></li>
+            <li><a href="#requirements">3. Requirement Gathering and Analysis</a></li>
+            <li><a href="#design">4. System Design</a></li>
+            <li><a href="#development">5. Development</a></li>
+            <li><a href="#testing">6. Testing</a></li>
+            <li><a href="#deployment">7. Deployment</a></li>
+            <li><a href="#maintenance">8. Maintenance</a></li>
+            <li><a href="#conclusion">9. Conclusion</a></li>
+        </ul>
+    </div>
+
+    <!-- Section 1 -->
+    <div id="intro" class="section">
+        <h2>1. Introduction to SDLC</h2>
+        <h3>What is SDLC?</h3>
+        <p>Software Development Life Cycle (SDLC) is a structured process used for planning, designing, developing, testing, deploying, and maintaining software applications. It provides a systematic approach to software development, ensuring that the final product meets customer requirements and quality standards.</p>
+
+        <h3>Why is SDLC Used?</h3>
+        <p>SDLC helps organizations manage software projects efficiently by defining clear phases and responsibilities. It ensures better communication among team members, minimizes risks, and improves overall software quality.</p>
+
+        <h3>Key Objectives of SDLC</h3>
+        <ul>
+            <li>To develop high-quality software.</li>
+            <li>To meet customer requirements effectively.</li>
+            <li>To reduce project risks and costs.</li>
+            <li>To improve project management and planning.</li>
+            <li>To ensure timely delivery of software products.</li>
+        </ul>
+
+        <h3>SDLC Flow:</h3>
+        <p><strong>Requirement Analysis &rarr; Design &rarr; Development &rarr; Testing &rarr; Deployment &rarr; Maintenance</strong></p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="SDLC Cycle Diagram">
+            <div class="image-caption">Figure 1: Illustration of SDLC Planning and Cycle</div>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div id="pros-cons" class="section">
+        <h2>2. Advantages and Disadvantages of SDLC</h2>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="margin-top: 0;">Advantages of SDLC</h3>
+                <ul>
+                    <li>Provides a structured development process.</li>
+                    <li>Improves software quality and reliability.</li>
+                    <li>Helps in better project planning and management.</li>
+                    <li>Reduces development risks and costs.</li>
+                    <li>Enhances communication among stakeholders.</li>
+                    <li>Ensures timely project completion.</li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="margin-top: 0;">Disadvantages of SDLC</h3>
+                <ul>
+                    <li>Requires extensive documentation.</li>
+                    <li>Initial planning can be time-consuming.</li>
+                    <li>Changes in requirements may increase project costs.</li>
+                    <li>Some SDLC models are less flexible.</li>
+                    <li>Large projects may require significant resources.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Applications of SDLC</h3>
+        <p>SDLC is widely used in:</p>
+        <ul>
+            <li>E-commerce Websites</li>
+            <li>Banking Applications</li>
+            <li>Healthcare Systems</li>
+            <li>Educational Platforms</li>
+            <li>Enterprise Software</li>
+            <li>Mobile Applications</li>
+        </ul>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Benefits of SDLC">
+            <div class="image-caption">Figure 2: Team collaboration benefiting from structured SDLC</div>
+        </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div id="requirements" class="section">
+        <h2>3. Requirement Gathering and Analysis</h2>
+        <h3>Objective</h3>
+        <p>The purpose of this phase is to understand and document the requirements of stakeholders and end users.</p>
+
+        <h3>Activities Performed</h3>
+        <ul>
+            <li>Gathering business requirements.</li>
+            <li>Conducting stakeholder meetings.</li>
+            <li>Analyzing project feasibility.</li>
+            <li>Preparing requirement documents.</li>
+        </ul>
+
+        <h3>Deliverables</h3>
+        <ul>
+            <li>Software Requirement Specification (SRS)</li>
+            <li>Functional Requirements</li>
+            <li>Non-Functional Requirements</li>
+        </ul>
+
+        <h3>Importance</h3>
+        <p>Requirement analysis helps ensure that the project starts with a clear understanding of goals, expectations, and constraints, reducing the chances of future issues.</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80" alt="Requirement Analysis">
+            <div class="image-caption">Figure 3: Stakeholders gathering requirements</div>
+        </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div id="design" class="section">
+        <h2>4. System Design</h2>
+        <h3>Objective</h3>
+        <p>The system design phase focuses on creating the architecture and design of the software based on the collected requirements.</p>
+
+        <h3>Activities Performed</h3>
+        <ul>
+            <li>Designing system architecture.</li>
+            <li>Creating database structures.</li>
+            <li>Developing user interface designs.</li>
+            <li>Planning APIs and system components.</li>
+        </ul>
+
+        <h3>Deliverables</h3>
+        <ul>
+            <li>Architecture Diagrams</li>
+            <li>Database Design Documents</li>
+            <li>Wireframes and UI Mockups</li>
+        </ul>
+
+        <h3>Importance</h3>
+        <p>This phase acts as a blueprint for developers and helps in building a scalable and efficient system.</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?w=800&q=80" alt="System Design">
+            <div class="image-caption">Figure 4: Blueprinting and System Architecture Design</div>
+        </div>
+    </div>
+
+    <!-- Section 5 -->
+    <div id="development" class="section">
+        <h2>5. Development</h2>
+        <h3>Objective</h3>
+        <p>The development phase involves converting system designs into a working software application through coding.</p>
+
+        <h3>Activities Performed</h3>
+        <ul>
+            <li>Frontend Development</li>
+            <li>Backend Development</li>
+            <li>Database Integration</li>
+            <li>API Development</li>
+        </ul>
+
+        <h3>Technologies Commonly Used</h3>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>React.js, Next.js</li>
+            <li>Node.js</li>
+            <li>MongoDB</li>
+        </ul>
+
+        <h3>Importance</h3>
+        <p>This phase is responsible for creating the actual software product that fulfills the defined requirements.</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80" alt="Software Development">
+            <div class="image-caption">Figure 5: Writing code during the development phase</div>
+        </div>
+    </div>
+
+    <!-- Section 6 -->
+    <div id="testing" class="section">
+        <h2>6. Testing</h2>
+        <h3>Objective</h3>
+        <p>The testing phase ensures that the software functions correctly and meets quality standards before release.</p>
+
+        <h3>Types of Testing</h3>
+        <ul>
+            <li>Unit Testing</li>
+            <li>Integration Testing</li>
+            <li>System Testing</li>
+            <li>User Acceptance Testing (UAT)</li>
+        </ul>
+
+        <h3>Benefits of Testing</h3>
+        <ul>
+            <li>Identifies and fixes defects.</li>
+            <li>Improves software quality.</li>
+            <li>Enhances performance and reliability.</li>
+            <li>Ensures customer satisfaction.</li>
+        </ul>
+
+        <h3>Importance</h3>
+        <p>Testing helps deliver a stable and secure software product by identifying issues before deployment.</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80" alt="Software Testing">
+            <div class="image-caption">Figure 6: Quality Assurance and Software Testing</div>
+        </div>
+    </div>
+
+    <!-- Section 7 -->
+    <div id="deployment" class="section">
+        <h2>7. Deployment</h2>
+        <h3>Objective</h3>
+        <p>The deployment phase involves releasing the software application into the production environment for end users.</p>
+
+        <h3>Activities Performed</h3>
+        <ul>
+            <li>Server Configuration</li>
+            <li>Production Deployment</li>
+            <li>Performance Monitoring</li>
+            <li>Release Management</li>
+        </ul>
+
+        <h3>Common Deployment Tools</h3>
+        <ul>
+            <li>GitHub</li>
+            <li>Docker</li>
+            <li>AWS</li>
+            <li>Vercel</li>
+        </ul>
+
+        <h3>Importance</h3>
+        <p>Deployment makes the software available to users and marks the transition from development to real-world usage.</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=80" alt="Deployment">
+            <div class="image-caption">Figure 7: Server infrastructure for application deployment</div>
+        </div>
+    </div>
+
+    <!-- Section 8 -->
+    <div id="maintenance" class="section">
+        <h2>8. Maintenance</h2>
+        <h3>Objective</h3>
+        <p>The maintenance phase focuses on keeping the software updated and functioning efficiently after deployment.</p>
+
+        <h3>Activities Performed</h3>
+        <ul>
+            <li>Bug Fixes</li>
+            <li>Security Updates</li>
+            <li>Feature Enhancements</li>
+            <li>Performance Optimization</li>
+        </ul>
+
+        <h3>Importance</h3>
+        <p>Maintenance ensures long-term reliability, security, and user satisfaction while adapting the software to changing requirements.</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Maintenance and Support">
+            <div class="image-caption">Figure 8: Ongoing system maintenance and support</div>
+        </div>
+    </div>
+
+    <!-- Section 9 -->
+    <div id="conclusion" class="section">
+        <h2>9. Conclusion</h2>
+        <p>Software Development Life Cycle (SDLC) is a systematic and organized approach to software development. It consists of multiple phases, including requirement gathering, design, development, testing, deployment, and maintenance. Each phase plays a crucial role in ensuring the successful delivery of a high-quality software product.</p>
+
+        <p>By following SDLC, organizations can improve project management, reduce risks, enhance software quality, and achieve greater customer satisfaction. Therefore, SDLC remains one of the most important frameworks used in modern software engineering practices.</p>
+
+        <h3>Key Takeaways</h3>
+        <ul>
+            <li>SDLC provides a structured approach to software development.</li>
+            <li>It improves software quality and reliability.</li>
+            <li>It reduces project risks and development costs.</li>
+            <li>It ensures efficient project management and timely delivery.</li>
+            <li>It supports long-term maintenance and scalability of software applications.</li>
+        </ul>
+
+        <h3 style="text-align: center; margin-top: 50px; color: var(--secondary-color);">Thank You</h3>
+    </div>
+
+</div>
+
+</body>
+</html>
